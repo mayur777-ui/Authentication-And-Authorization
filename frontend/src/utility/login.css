@@ -1,0 +1,146 @@
+/* Pro-level Animated Gradient Background */
+.login-page {
+  background: linear-gradient(135deg, #00c6ff 0%, #0072ff 100%);
+  background-size: 300% 300%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+  animation: gradientShift 15s ease infinite;
+}
+
+/* Animated gradient shifting */
+@keyframes gradientShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* Parallax scrolling effect for waves */
+@keyframes waveMovement {
+  0% { transform: translateY(0); }
+  50% { transform: translateY(-20px); }
+  100% { transform: translateY(0); }
+}
+
+.wave {
+  position: absolute;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.3), transparent 80%);
+  animation: waveMovement 10s ease-in-out infinite;
+  opacity: 0.4;
+  z-index: 0;
+}
+
+.wave:nth-child(1) {
+  top: -100px;
+  left: -60%;
+  animation-duration: 20s;
+}
+
+.wave:nth-child(2) {
+  bottom: -100px;
+  right: -70%;
+  animation-duration: 25s;
+}
+
+/* Floating particle animation */
+.particle {
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  background-color: rgba(255, 255, 255, 0.5);
+  border-radius: 50%;
+  animation: floatParticles 12s infinite ease-in-out;
+}
+
+@keyframes floatParticles {
+  0% { transform: translateY(0); }
+  50% { transform: translateY(-50px); }
+  100% { transform: translateY(0); }
+}
+
+.particle:nth-child(1) { top: 20%; left: 10%; }
+.particle:nth-child(2) { top: 50%; right: 15%; }
+.particle:nth-child(3) { bottom: 30%; left: 30%; }
+
+/* Advanced Glassmorphism */
+.login-card {
+  position: relative;
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(15px) saturate(200%);
+  border-radius: 15px;
+  box-shadow: 0 8px 32px rgba(31, 38, 135, 0.37);
+  padding: 2.5rem;
+  width: 100%;
+  max-width: 450px;
+  z-index: 10;
+  transition: transform 0.5s ease;
+}
+
+.login-card:hover {
+  transform: translateY(-10px);
+}
+
+/* Glowing Inputs */
+.login-input {
+  border-radius: 30px;
+  border: 2px solid rgba(255, 255, 255, 0.5);
+  padding: 15px;
+  transition: border 0.3s, box-shadow 0.3s;
+  font-size: 1.1rem;
+}
+
+.login-input:focus {
+  border-color: #00c6ff;
+  box-shadow: 0 0 20px rgba(0, 198, 255, 0.7);
+}
+
+/* Pro Button Hover Effects */
+.login-btn {
+  background-color: transparent;
+  border: 2px solid #fff;
+  border-radius: 30px;
+  padding: 15px;
+  width: 100%;
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: white;
+  transition: all 0.4s ease;
+}
+
+.login-btn:hover {
+  background-color: #00c6ff;
+  color: #fff;
+  box-shadow: 0 10px 25px rgba(0, 198, 255, 0.6);
+  transform: scale(1.05);
+}
+
+/* Typography */
+h2 {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 700;
+  color: white;
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+a {
+  color: #00c6ff;
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+a:hover {
+  color: #fff;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .login-card {
+    padding: 2rem;
+  }
+}
