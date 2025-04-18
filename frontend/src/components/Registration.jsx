@@ -2,13 +2,14 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import '../utility/Register.css';
-
+import { GoogleLogin } from '@react-oauth/google';
 export default function Registration() {
   const [input, setInput] = useState({
     name: '',
     email: '',
     password: '',
     role: '',
+    google: '',
   });
   const [errors, setErrors] = useState({});
   const [submitted, setSubmitted] = useState(false);
@@ -58,6 +59,23 @@ export default function Registration() {
       [name]: value,
     }));
   };
+
+const handleGoogleLogin = async(response)=>{
+  try{
+    const googelToken = response.credential;
+    const res = await axios.post(`${USER_API_END_POINT}/googleLogin`,{
+      token : googelToken,
+    });
+    const {token} = res.data;
+    localStorage.setItem('token', token);
+    navigate('/dashboard');
+  }catch(err){
+    console.log(err);
+    setErrors((prev)=>({
+      ...prev,google:'Google login failed.please try again',
+    }))
+  }
+}
 
   return (
     <div className="registration-page">
@@ -141,6 +159,12 @@ export default function Registration() {
           </div>
           <button type="submit" className="outline-btn registration-btn">Register</button>
         </form>
+
+        <GoogleLogin 
+        onSuccess={handleGoogleLogin}
+        onError={(error) => setErrors({google: 'Google login failed'})}
+
+        />
       </div>
     </div>
   );
