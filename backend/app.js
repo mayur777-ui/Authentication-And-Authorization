@@ -13,6 +13,15 @@ app.use(express.json());
 // Middleware to parse URL-encoded request bodies
 app.use(express.urlencoded({ extended: true }));
 
+// app.use((req, res, next) => {
+//     res.setHeader(
+//       "Content-Security-Policy",
+//       "script-src 'self' https://accounts.google.com https://apis.google.com https://www.gstatic.com https://ssl.gstatic.com 'unsafe-inline';"
+//     );
+//     next();
+//   });
+  
+
 // Use the user router
 app.use('/api/user', userRouter);
 
